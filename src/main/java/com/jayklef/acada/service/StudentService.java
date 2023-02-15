@@ -13,7 +13,7 @@ public interface StudentService {
 
     Student findStudent(Long id) throws Exception;
 
-    Student updateStudent(Long id, Student student);
+    Student updateStudent(Long id, StudentDto studentDto);
 
     void deleteById(Long id) throws Exception;
 }

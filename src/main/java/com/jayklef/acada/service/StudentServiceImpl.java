@@ -61,12 +61,43 @@ public class StudentServiceImpl implements StudentService{
     }
 
     @Override
-    public Student updateStudent(Long id, Student student) {
+    public Student updateStudent(Long id, StudentDto studentDto) {
         Student studentInDb = studentRepository.findById(id).get();
 
-        if (Objects.nonNull(student.getFirstname()) &&
-        !"".equalsIgnoreCase(student.getFirstname())){
-            studentInDb.setFirstname(student.getFirstname());
+        if (Objects.nonNull(studentDto.getFirstname()) &&
+        !"".equalsIgnoreCase(studentDto.getFirstname())){
+            studentInDb.setFirstname(studentDto.getFirstname());
+        }
+
+        if (Objects.nonNull(studentDto.getLastname()) &&
+        !"".equalsIgnoreCase(studentDto.getLastname())){
+            studentInDb.setLastname(studentDto.getLastname());
+        }
+
+        if (Objects.nonNull(studentDto.getBirthDate())&&
+        !"".equalsIgnoreCase(studentDto.getBirthDate())){
+            studentInDb.setBirthDate(studentDto.getBirthDate());
+        }
+
+        if (Objects.nonNull(studentDto.getEmail()) &&
+        !"".equalsIgnoreCase(studentDto.getEmail())){
+            studentInDb.setEmail(studentDto.getEmail());
+        }
+
+        if (Objects.nonNull(studentDto.getAddress()) &&
+        !"".equalsIgnoreCase(studentDto.getAddress())){
+            studentInDb.setAddress(studentDto.getAddress());
+        }
+
+        if (Objects.nonNull(studentDto.getState()) &&
+        !"".equalsIgnoreCase(studentDto.getState())){
+            studentInDb.setState(studentDto.getState());
+        }
+
+        if (Objects.nonNull(studentDto.getDepartmentId()) &&
+        !"".equalsIgnoreCase(studentDto.getDepartmentId().toString())){
+            Optional<Department> department = departmentRepository.findById(studentDto.getDepartmentId());
+            studentInDb.setDepartment(department.get());
         }
 
         return studentRepository.save(studentInDb);
