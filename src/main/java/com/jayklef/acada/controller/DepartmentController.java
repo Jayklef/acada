@@ -40,4 +40,10 @@ public class DepartmentController {
         Department updatedDepartment = departmentService.updateDepartment(id, departmentDto);
         return new ResponseEntity<>(updatedDepartment, HttpStatus.OK);
     }
+
+    @DeleteMapping("delete/{id}")
+    public ResponseEntity<HttpStatus> deleteDepartment(@PathVariable("departmentId") Long id) throws Exception {
+        departmentService.deleteDepartment(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
 }
