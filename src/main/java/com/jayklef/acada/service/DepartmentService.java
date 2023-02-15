@@ -12,4 +12,6 @@ public interface DepartmentService {
     List<Department> findAllDepartments();
 
     Department findDepartment(Long id) throws Exception;
+
+    Department updateDepartment(Long id, DepartmentDto departmentDto);
 }

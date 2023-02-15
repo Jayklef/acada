@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -38,5 +39,28 @@ public class DepartmentServiceImpl implements DepartmentService{
             throw new Exception("Department with id:" + id + "does not exist");
         }
         return department.get();
+    }
+
+    @Override
+    public Department updateDepartment(Long id, DepartmentDto departmentDto) {
+
+        Department departmentInDb = departmentRepository.findById(id).get();
+
+        if (Objects.nonNull(departmentDto.getName()) &&
+        !"".equalsIgnoreCase(departmentDto.getName())){
+            departmentInDb.setName(departmentDto.getName());
+        }
+
+        if (Objects.nonNull(departmentDto.getDeptCode()) &&
+        !"".equalsIgnoreCase(departmentDto.getDeptCode())){
+            departmentInDb.setDeptCode(departmentDto.getDeptCode());
+        }
+
+        if (Objects.nonNull(departmentDto.getLocation()) &&
+        !"".equalsIgnoreCase(departmentDto.getLocation())){
+            departmentInDb.setLocation(departmentDto.getLocation());
+        }
+
+        return departmentRepository.save(departmentInDb);
     }
 }
