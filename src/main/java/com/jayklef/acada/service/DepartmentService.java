@@ -10,4 +10,6 @@ public interface DepartmentService {
     Department saveDepartment(DepartmentDto departmentDto);
 
     List<Department> findAllDepartments();
+
+    Department findDepartment(Long id) throws Exception;
 }

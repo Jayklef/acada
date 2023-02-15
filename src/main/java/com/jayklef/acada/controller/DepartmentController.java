@@ -28,4 +28,10 @@ public class DepartmentController {
         List<Department> departments = departmentService.findAllDepartments();
         return new ResponseEntity<>(departments, HttpStatus.FOUND);
     }
+
+    @GetMapping("/department/{id}")
+    public ResponseEntity<Department> getDepartment(@PathVariable("departmentId") Long id) throws Exception {
+        Department department = departmentService.findDepartment(id);
+        return new ResponseEntity<>(department, HttpStatus.OK);
+    }
 }
