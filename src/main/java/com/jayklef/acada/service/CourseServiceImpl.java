@@ -86,4 +86,11 @@ public class CourseServiceImpl implements CourseService{
         }
         return courseRepository.save(courseInDb);
     }
+
+    @Override
+    public void deleteCourse(Long id) throws Exception {
+        Course course = findCourse(id);
+        courseRepository.deleteById(course.getId());
+    }
+
 }
