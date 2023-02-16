@@ -2,11 +2,16 @@ package com.jayklef.acada.service;
 
 import com.jayklef.acada.dto.CourseDto;
 import com.jayklef.acada.entity.Course;
+import com.jayklef.acada.entity.Department;
+import com.jayklef.acada.entity.Student;
 import com.jayklef.acada.repository.CourseRepository;
+import com.jayklef.acada.repository.DepartmentRepository;
+import com.jayklef.acada.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -15,6 +20,11 @@ public class CourseServiceImpl implements CourseService{
 
     @Autowired
     private CourseRepository courseRepository;
+
+    @Autowired
+    private DepartmentRepository departmentRepository;
+    @Autowired
+    private StudentRepository studentRepository;
 
     @Override
     public Course saveCourse(CourseDto courseDto){
@@ -41,5 +51,39 @@ public class CourseServiceImpl implements CourseService{
         }
 
         return course.get();
+    }
+
+    @Override
+    public Course updateCourse(Long id, CourseDto courseDto) {
+
+        Course courseInDb = courseRepository.findById(id).get();
+
+        if (Objects.nonNull(courseDto.getName()) &&
+        "".equalsIgnoreCase(courseDto.getName())){
+            courseInDb.setName(courseDto.getName());
+        }
+
+        if (Objects.nonNull(courseDto.getUnit()) &&
+        !"".equalsIgnoreCase(courseDto.getUnit().toString())){
+            courseInDb.setUnit(courseDto.getUnit());
+        }
+
+        if (Objects.nonNull(courseDto.getCode()) &&
+        !"".equalsIgnoreCase(courseDto.getCode())){
+            courseInDb.setCode(courseDto.getCode());
+        }
+
+        if (Objects.nonNull(courseDto.getDepartmentId()) &&
+        "".equalsIgnoreCase(courseDto.getDepartmentId().toString())){
+            Optional<Department> department = departmentRepository.findById(courseDto.getDepartmentId());
+            courseInDb.setDepartment(department.get());
+        }
+
+        if (Objects.nonNull(courseDto.getStudentId()) &&
+        !"".equalsIgnoreCase(courseDto.getStudentId().toString())){
+            Optional<Student> student = studentRepository.findById(courseDto.getStudentId());
+            courseInDb.setStudents(student.stream().toList());
+        }
+        return courseRepository.save(courseInDb);
     }
 }

@@ -12,4 +12,6 @@ public interface CourseService {
     List<Course> findAllCourse();
 
     Course findCourse(Long id) throws Exception;
+
+    Course updateCourse(Long id, CourseDto courseDto);
 }

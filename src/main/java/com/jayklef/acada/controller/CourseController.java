@@ -24,16 +24,23 @@ public class CourseController {
         return new ResponseEntity<>(newCourse, HttpStatus.CREATED);
     }
 
-    @GetMapping("/find")
+    @GetMapping("/all")
     public ResponseEntity<List<Course>> findAllCourses(){
         List<Course> courses = courseService.findAllCourse();
         return new ResponseEntity<>(courses, HttpStatus.FOUND);
     }
-
 
     @GetMapping("/course/{id}")
     public ResponseEntity<Course> findCourse(@PathVariable("courseId") Long id) throws Exception {
         Course course = courseService.findCourse(id);
         return new ResponseEntity<>(course, HttpStatus.FOUND);
     }
+
+    @PutMapping("/update/{id}")
+    public ResponseEntity<Course> updateCourse(@PathVariable("courseId") Long id,
+                                               @RequestBody CourseDto courseDto){
+        Course courseToUpdate = courseService.updateCourse(id, courseDto);
+        return new ResponseEntity<>(courseToUpdate, HttpStatus.OK);
+    }
+
 }
