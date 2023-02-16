@@ -16,4 +16,6 @@ public interface StudentService {
     Student updateStudent(Long id, StudentDto studentDto);
 
     void deleteById(Long id) throws Exception;
+
+    Student findByFirstname(String firstname);
 }

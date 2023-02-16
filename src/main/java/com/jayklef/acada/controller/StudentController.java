@@ -35,6 +35,12 @@ public class StudentController {
         return new ResponseEntity<>(student, HttpStatus.FOUND);
     }
 
+    @GetMapping("/name")
+    public ResponseEntity<Student> findByFirstname(@RequestParam String firstname){
+        Student student = studentService.findByFirstname(firstname);
+        return new ResponseEntity<>(student, HttpStatus.FOUND);
+    }
+
     @PutMapping("/update/{id}")
     public ResponseEntity<Student> updateStudent(@PathVariable("studentId") Long id, StudentDto studentDto){
         Student studentToUpdate = studentService.updateStudent(id, studentDto);
