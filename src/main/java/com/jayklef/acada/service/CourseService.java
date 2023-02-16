@@ -10,4 +10,6 @@ public interface CourseService {
     Course saveCourse(CourseDto courseDto);
 
     List<Course> findAllCourse();
+
+    Course findCourse(Long id) throws Exception;
 }

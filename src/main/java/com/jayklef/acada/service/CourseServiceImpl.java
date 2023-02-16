@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -28,5 +29,17 @@ public class CourseServiceImpl implements CourseService{
     @Override
     public List<Course> findAllCourse() {
         return courseRepository.findAll();
+    }
+
+    @Override
+    public Course findCourse(Long id) throws Exception {
+
+        Optional<Course> course = courseRepository.findById(id);
+
+        if (course.isPresent()){
+            throw new Exception("Course whose id is " + id + "not found");
+        }
+
+        return course.get();
     }
 }

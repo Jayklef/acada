@@ -29,4 +29,11 @@ public class CourseController {
         List<Course> courses = courseService.findAllCourse();
         return new ResponseEntity<>(courses, HttpStatus.FOUND);
     }
+
+
+    @GetMapping("/course/{id}")
+    public ResponseEntity<Course> findCourse(@PathVariable("courseId") Long id) throws Exception {
+        Course course = courseService.findCourse(id);
+        return new ResponseEntity<>(course, HttpStatus.FOUND);
+    }
 }
