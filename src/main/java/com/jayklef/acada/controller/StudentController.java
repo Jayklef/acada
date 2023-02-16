@@ -2,6 +2,7 @@ package com.jayklef.acada.controller;
 
 import com.jayklef.acada.dto.StudentDto;
 import com.jayklef.acada.entity.Student;
+import com.jayklef.acada.exception.ResourceNotFoundException;
 import com.jayklef.acada.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

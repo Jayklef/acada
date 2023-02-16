@@ -4,6 +4,7 @@ import com.jayklef.acada.dto.StudentDto;
 import com.jayklef.acada.entity.Course;
 import com.jayklef.acada.entity.Department;
 import com.jayklef.acada.entity.Student;
+import com.jayklef.acada.exception.ResourceNotFoundException;
 import com.jayklef.acada.repository.DepartmentRepository;
 import com.jayklef.acada.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,7 +56,7 @@ public class StudentServiceImpl implements StudentService{
         Optional<Student> student = studentRepository.findById(id);
 
         if (!student.isPresent()){
-            throw new Exception("student whose Id is  " + id + "not found");
+            throw new ResourceNotFoundException("student whose Id is  " + id + "not found");
         }
         return student.get();
     }

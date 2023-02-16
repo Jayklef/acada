@@ -4,6 +4,7 @@ import com.jayklef.acada.dto.CourseDto;
 import com.jayklef.acada.entity.Course;
 import com.jayklef.acada.entity.Department;
 import com.jayklef.acada.entity.Student;
+import com.jayklef.acada.exception.ResourceNotFoundException;
 import com.jayklef.acada.repository.CourseRepository;
 import com.jayklef.acada.repository.DepartmentRepository;
 import com.jayklef.acada.repository.StudentRepository;
@@ -42,12 +43,12 @@ public class CourseServiceImpl implements CourseService{
     }
 
     @Override
-    public Course findCourse(Long id) throws Exception {
+    public Course findCourse(Long id) {
 
         Optional<Course> course = courseRepository.findById(id);
 
         if (course.isPresent()){
-            throw new Exception("Course whose id is " + id + "not found");
+            throw new ResourceNotFoundException("Course whose id is " + id + "not found");
         }
 
         return course.get();

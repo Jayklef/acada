@@ -2,6 +2,7 @@ package com.jayklef.acada.service;
 
 import com.jayklef.acada.dto.DepartmentDto;
 import com.jayklef.acada.entity.Department;
+import com.jayklef.acada.exception.ResourceNotFoundException;
 import com.jayklef.acada.repository.DepartmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,7 +37,7 @@ public class DepartmentServiceImpl implements DepartmentService{
         Optional<Department> department = departmentRepository.findById(id);
 
         if (!department.isPresent()){
-            throw new Exception("Department with id:" + id + "does not exist");
+            throw new ResourceNotFoundException("Department with id:" + id + "does not exist");
         }
         return department.get();
     }
@@ -69,7 +70,7 @@ public class DepartmentServiceImpl implements DepartmentService{
         Department department = findDepartment(id);
 
         if (department == null){
-            throw new Exception("Department with Id of " + id + "not found");
+            throw new ResourceNotFoundException("Department with Id of " + id + "not found");
         }
 
         departmentRepository.deleteById(id);
