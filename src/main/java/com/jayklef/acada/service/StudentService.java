@@ -1,11 +1,13 @@
 package com.jayklef.acada.service;
 
 import com.jayklef.acada.dto.StudentDto;
+import com.jayklef.acada.entity.Department;
 import com.jayklef.acada.entity.Student;
 import org.springframework.http.ResponseEntity;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Map;
 
 public interface StudentService {
 
@@ -22,4 +24,8 @@ public interface StudentService {
     Student findByFirstname(String firstname);
 
     Long calculateTotalStudents(List<Student> students);
+
+    BigDecimal findStudentFee(Department department, Student student) throws Exception;
+
+    Map<String, BigDecimal> findStudentAndFees(String firstname, BigDecimal schoolFee);
 }

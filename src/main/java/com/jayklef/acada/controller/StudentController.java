@@ -1,6 +1,7 @@
 package com.jayklef.acada.controller;
 
 import com.jayklef.acada.dto.StudentDto;
+import com.jayklef.acada.entity.Department;
 import com.jayklef.acada.entity.Student;
 import com.jayklef.acada.exception.ResourceNotFoundException;
 import com.jayklef.acada.service.StudentService;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Map;
 
 
 @RestController
@@ -59,6 +61,18 @@ public class StudentController {
     @GetMapping("/students/total")
     public Long totalStudents(@RequestParam List<Student> students){
        return studentService.calculateTotalStudents(students);
+    }
+
+    @GetMapping("/students/fee")
+    public  BigDecimal studentFee(@PathVariable Department department, @PathVariable Student student) throws Exception {
+        return studentService.findStudentFee(department, student);
+    }
+
+    @GetMapping("/student/fees")
+    public ResponseEntity<Map<String, BigDecimal>> studentAndFees(@RequestParam String firstname,
+                                                                   @RequestParam BigDecimal schoolFee){
+        Map<String, BigDecimal> studentFees = studentService.findStudentAndFees(firstname, schoolFee);
+        return new ResponseEntity<>(studentFees, HttpStatus.FOUND);
     }
 
 }

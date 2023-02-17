@@ -8,12 +8,11 @@ import com.jayklef.acada.exception.ResourceNotFoundException;
 import com.jayklef.acada.repository.DepartmentRepository;
 import com.jayklef.acada.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -126,5 +125,29 @@ public class StudentServiceImpl implements StudentService{
 
        /* Long totalStudents = studentRepository.count();
         return totalStudents; */
+    }
+
+    @Override
+    public BigDecimal findStudentFee(Department department, Student student) throws Exception {
+
+        Student studentInDb = findStudent(student.getId());
+        if (studentInDb == null){
+            throw new ResourceNotFoundException("Student with id of " + student.getId() + "not found");
+        }
+        return studentInDb.getDepartment().getSchoolFee();
+    }
+
+    @Override
+    public Map<String, BigDecimal> findStudentAndFees(String firstname, BigDecimal schoolFee) {
+        Map<String, BigDecimal> fees = new HashMap<>();
+
+      //  Map<String, BigDecimal> fees = (Map<String, BigDecimal>) studentRepository.findAll();
+
+        for (Map.Entry<String, BigDecimal> entry : fees.entrySet()){
+            String f = entry.getKey();
+            BigDecimal s = entry.getValue();
+        }
+
+          return fees;
     }
 }
