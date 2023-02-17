@@ -31,13 +31,13 @@ public class CourseController {
     }
 
     @GetMapping("/course/{id}")
-    public ResponseEntity<Course> findCourse(@PathVariable("courseId") Long id) throws Exception {
+    public ResponseEntity<Course> findCourse(@PathVariable("id") Long id) throws Exception {
         Course course = courseService.findCourse(id);
         return new ResponseEntity<>(course, HttpStatus.FOUND);
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<Course> updateCourse(@PathVariable("courseId") Long id,
+    public ResponseEntity<Course> updateCourse(@PathVariable("id") Long id,
                                                @RequestBody CourseDto courseDto){
         Course courseToUpdate = courseService.updateCourse(id, courseDto);
         return new ResponseEntity<>(courseToUpdate, HttpStatus.OK);
@@ -48,5 +48,10 @@ public class CourseController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
+    @GetMapping("/name")
+    public ResponseEntity<Course> findCourseByName(@RequestParam String name){
+        Course course = courseService.findByName(name);
+        return new ResponseEntity<>(course, HttpStatus.OK);
+    }
 
 }

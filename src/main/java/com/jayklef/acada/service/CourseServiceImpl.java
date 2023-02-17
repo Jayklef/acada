@@ -94,4 +94,9 @@ public class CourseServiceImpl implements CourseService{
         courseRepository.deleteById(course.getId());
     }
 
+    @Override
+    public Course findByName(String name) {
+        return courseRepository.findByName(name);
+    }
+
 }

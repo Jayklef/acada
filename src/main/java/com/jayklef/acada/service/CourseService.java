@@ -16,4 +16,6 @@ public interface CourseService {
     Course updateCourse(Long id, CourseDto courseDto);
 
     void deleteCourse(Long id) throws Exception;
+
+    Course findByName(String name);
 }
