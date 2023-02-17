@@ -8,6 +8,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
+
 @Entity
 @Data
 @AllArgsConstructor
@@ -19,4 +21,5 @@ public class Department {
     private String name;
     private String deptCode;
     private String location;
+    private BigDecimal schoolFee;
 }

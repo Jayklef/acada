@@ -22,6 +22,7 @@ public class DepartmentServiceImpl implements DepartmentService{
         newDepartment.setName(departmentDto.getName());
         newDepartment.setDeptCode(departmentDto.getDeptCode());
         newDepartment.setLocation(departmentDto.getLocation());
+        newDepartment.setSchoolFee(departmentDto.getSchoolFee());
 
         return departmentRepository.save(newDepartment);
     }
