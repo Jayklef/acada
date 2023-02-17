@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 
@@ -53,6 +54,11 @@ public class StudentController {
     public ResponseEntity<HttpStatus> deleteStudent(@PathVariable("studentId") Long id) throws Exception {
         studentService.deleteById(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @GetMapping("/students/total")
+    public Long totalStudents(@RequestParam List<Student> students){
+       return studentService.calculateTotalStudents(students);
     }
 
 }

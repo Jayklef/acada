@@ -10,9 +10,11 @@ import com.jayklef.acada.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class StudentServiceImpl implements StudentService{
@@ -114,5 +116,15 @@ public class StudentServiceImpl implements StudentService{
     public Student findByFirstname(String firstname) {
         Student student = studentRepository.findByFirstname(firstname);
         return student;
+    }
+
+    @Override
+    public Long calculateTotalStudents(List<Student> students){
+
+        List<Student> totalStudent = findAllStudents();
+        return (long) totalStudent.size();
+
+       /* Long totalStudents = studentRepository.count();
+        return totalStudents; */
     }
 }
