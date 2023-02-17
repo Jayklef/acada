@@ -75,4 +75,9 @@ public class StudentController {
         return new ResponseEntity<>(studentFees, HttpStatus.FOUND);
     }
 
+    @GetMapping("/students/totalfees")
+    public BigDecimal totalSchoolFees(@RequestParam Department department){
+        return studentService.calculateTotalFees(department);
+    }
+
 }

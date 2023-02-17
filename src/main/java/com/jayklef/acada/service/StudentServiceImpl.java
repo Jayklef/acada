@@ -150,4 +150,23 @@ public class StudentServiceImpl implements StudentService{
 
           return fees;
     }
+
+    @Override
+    public BigDecimal calculateTotalFees(Department department) {
+
+        Student student = new Student();
+        BigDecimal sum = new BigDecimal(0);
+
+        BigDecimal fee = student.getDepartment().getSchoolFee();
+
+        BigDecimal totalFee = fee.add(sum);
+        return totalFee;
+
+
+      /*  List<Student> studentsFees = findAllStudents()
+                .stream().map(s -> s.getDepartment().getSchoolFee().add(sum))
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+        return studentsFees;   */
+
+    }
 }

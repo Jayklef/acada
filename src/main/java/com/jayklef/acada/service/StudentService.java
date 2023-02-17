@@ -28,4 +28,6 @@ public interface StudentService {
     BigDecimal findStudentFee(Department department, Student student) throws Exception;
 
     Map<String, BigDecimal> findStudentAndFees(String firstname, BigDecimal schoolFee);
+
+    BigDecimal calculateTotalFees(Department department);
 }
