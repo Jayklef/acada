@@ -4,6 +4,7 @@ import com.jayklef.acada.dto.DepartmentDto;
 import com.jayklef.acada.entity.Department;
 
 import java.util.List;
+import java.util.Map;
 
 public interface DepartmentService {
 
@@ -16,4 +17,5 @@ public interface DepartmentService {
     Department updateDepartment(Long id, DepartmentDto departmentDto);
 
     void deleteDepartment(Long id) throws Exception;
+
 }

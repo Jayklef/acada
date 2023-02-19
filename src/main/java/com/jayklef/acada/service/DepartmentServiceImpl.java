@@ -7,9 +7,8 @@ import com.jayklef.acada.repository.DepartmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class DepartmentServiceImpl implements DepartmentService{
@@ -24,12 +23,16 @@ public class DepartmentServiceImpl implements DepartmentService{
         newDepartment.setLocation(departmentDto.getLocation());
         newDepartment.setSchoolFee(departmentDto.getSchoolFee());
 
+
         return departmentRepository.save(newDepartment);
     }
 
     @Override
     public List<Department> findAllDepartments(){
-        return departmentRepository.findAll();
+        return departmentRepository.findAll()
+                .stream()
+                .sorted(Comparator.comparing(Department::getName))
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -76,4 +79,5 @@ public class DepartmentServiceImpl implements DepartmentService{
 
         departmentRepository.deleteById(id);
     }
+
 }

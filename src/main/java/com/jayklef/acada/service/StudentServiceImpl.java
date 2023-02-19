@@ -33,7 +33,7 @@ public class StudentServiceImpl implements StudentService{
         newStudent.setBirthDate(studentDto.getBirthDate());
         newStudent.setAddress(studentDto.getAddress());
         newStudent.setState(studentDto.getState());
-        Optional<Department> department = departmentRepository.findById(studentDto.getDepartmentId());
+        Optional<Department> department = departmentRepository.findById(studentDto.getDepartmentId().getId());
         newStudent.setDepartment(department.get());
 
         return studentRepository.save(newStudent);
@@ -98,7 +98,7 @@ public class StudentServiceImpl implements StudentService{
 
         if (Objects.nonNull(studentDto.getDepartmentId()) &&
         !"".equalsIgnoreCase(studentDto.getDepartmentId().toString())){
-            Optional<Department> department = departmentRepository.findById(studentDto.getDepartmentId());
+            Optional<Department> department = departmentRepository.findById(studentDto.getDepartmentId().getId());
             studentInDb.setDepartment(department.get());
         }
 
@@ -169,4 +169,5 @@ public class StudentServiceImpl implements StudentService{
         return studentsFees;   */
 
     }
+
 }

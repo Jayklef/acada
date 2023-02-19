@@ -30,4 +30,5 @@ public interface StudentService {
     Map<String, BigDecimal> findStudentAndFees(String firstname, BigDecimal schoolFee);
 
     BigDecimal calculateTotalFees(Department department);
+
 }

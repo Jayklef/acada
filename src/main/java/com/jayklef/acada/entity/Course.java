@@ -23,11 +23,11 @@ public class Course {
     @JoinTable(
             name = "student_course",
             joinColumns = @JoinColumn(name = "course_id"),
-            inverseJoinColumns = @JoinColumn(name = "studentt_id")
+            inverseJoinColumns = @JoinColumn(name = "student_id")
     )
     private List<Student> students;
 
     @ManyToOne
-    @JoinColumn(name = "department_id")
+    @JoinColumn(name = "department_id", nullable = false)
     private Department department;
 }

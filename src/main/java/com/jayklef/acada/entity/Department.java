@@ -1,14 +1,12 @@
 package com.jayklef.acada.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.util.Set;
 
 @Entity
 @Data
@@ -22,4 +20,10 @@ public class Department {
     private String deptCode;
     private String location;
     private BigDecimal schoolFee;
+
+    /*@OneToMany(mappedBy = "student")
+    private Set<Student> students;
+
+    @OneToMany(mappedBy = "course")
+    private Set<Course> courses; */
 }

@@ -34,7 +34,7 @@ public class StudentController {
     }
 
     @GetMapping("/student/{id}")
-    public ResponseEntity<Student> findStudent(@PathVariable("studentId") Long id) throws Exception {
+    public ResponseEntity<Student> findStudent(@PathVariable("id") Long id) throws Exception {
         Student student = studentService.findStudent(id);
         return new ResponseEntity<>(student, HttpStatus.FOUND);
     }
@@ -46,14 +46,14 @@ public class StudentController {
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<Student> updateStudent(@PathVariable("studentId") Long id,
+    public ResponseEntity<Student> updateStudent(@PathVariable("id") Long id,
                                                  @RequestBody StudentDto studentDto){
         Student studentToUpdate = studentService.updateStudent(id, studentDto);
         return new ResponseEntity<>(studentToUpdate, HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<HttpStatus> deleteStudent(@PathVariable("studentId") Long id) throws Exception {
+    public ResponseEntity<HttpStatus> deleteStudent(@PathVariable("id") Long id) throws Exception {
         studentService.deleteById(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }

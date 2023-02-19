@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("api/v1/departments")
@@ -34,16 +35,17 @@ public class DepartmentController {
         Department department = departmentService.findDepartment(id);
         return new ResponseEntity<>(department, HttpStatus.OK);
     }
-    @PutMapping("update/{id}")
+    @PutMapping("/update/{id}")
     public ResponseEntity<Department> updateDepartment(@PathVariable("departmentId") Long id,
                                                        @RequestBody DepartmentDto departmentDto){
         Department updatedDepartment = departmentService.updateDepartment(id, departmentDto);
         return new ResponseEntity<>(updatedDepartment, HttpStatus.OK);
     }
 
-    @DeleteMapping("delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity<HttpStatus> deleteDepartment(@PathVariable("departmentId") Long id) throws Exception {
         departmentService.deleteDepartment(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
 }
