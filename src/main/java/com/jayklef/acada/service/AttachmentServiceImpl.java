@@ -36,4 +36,10 @@ public class AttachmentServiceImpl implements AttachmentService{
         }
 
     }
+
+    @Override
+    public Attachment getAttachment(String fileId) {
+        return attachmentRepository.findById(fileId)
+                .orElseThrow(()-> new RuntimeException("file with id " + fileId + "nt found"));
+    }
 }

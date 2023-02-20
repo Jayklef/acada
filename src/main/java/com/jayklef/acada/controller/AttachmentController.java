@@ -4,10 +4,12 @@ import com.jayklef.acada.dto.ResponseData;
 import com.jayklef.acada.entity.Attachment;
 import com.jayklef.acada.service.AttachmentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -33,5 +35,17 @@ public class AttachmentController {
                 file.getContentType(),
                 file.getSize()
         );
+    }
+
+    @GetMapping("")
+    public ResponseEntity<Resource> downLoadFile(@PathVariable("fileId") String fileId){
+        Attachment attachment = attachmentService.getAttachment(fileId);
+        return ResponseEntity.ok()
+                .contentType(MediaType.parseMediaType(attachment.getFileType()))
+                .header(HttpHeaders.CONTENT_DISPOSITION,
+                        "attachment; filename = \"" +
+                                attachment.getFileName() + "\"")
+                .body(new ByteArrayResource(attachment.getData()));
+
     }
 }
