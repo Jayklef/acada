@@ -2,6 +2,7 @@ package com.jayklef.acada.service;
 
 import com.jayklef.acada.dto.DepartmentDto;
 import com.jayklef.acada.entity.Department;
+import com.jayklef.acada.entity.Student;
 
 import java.util.List;
 import java.util.Map;
@@ -19,4 +20,5 @@ public interface DepartmentService {
     void deleteDepartment(Long id) throws Exception;
 
     Department findByName(String name);
+
 }

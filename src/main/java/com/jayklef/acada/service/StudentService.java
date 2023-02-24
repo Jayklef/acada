@@ -31,4 +31,6 @@ public interface StudentService {
 
     BigDecimal calculateTotalFees(Department department);
 
+    List<Student> findAllStudentsByDepartment(Department department);
+
 }

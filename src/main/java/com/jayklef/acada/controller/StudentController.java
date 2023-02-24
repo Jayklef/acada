@@ -80,4 +80,10 @@ public class StudentController {
         return studentService.calculateTotalFees(department);
     }
 
+    @GetMapping("all/students")
+    public ResponseEntity<List<Student>> getAllStudentByDepartment(@RequestParam Department department){
+        List<Student> students = studentService.findAllStudentsByDepartment(department);
+        return new ResponseEntity<>(students, HttpStatus.FOUND);
+    }
+
 }

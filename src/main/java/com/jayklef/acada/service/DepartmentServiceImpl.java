@@ -2,6 +2,7 @@ package com.jayklef.acada.service;
 
 import com.jayklef.acada.dto.DepartmentDto;
 import com.jayklef.acada.entity.Department;
+import com.jayklef.acada.entity.Student;
 import com.jayklef.acada.exception.ResourceNotFoundException;
 import com.jayklef.acada.repository.DepartmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;

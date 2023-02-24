@@ -2,6 +2,7 @@ package com.jayklef.acada.controller;
 
 import com.jayklef.acada.dto.DepartmentDto;
 import com.jayklef.acada.entity.Department;
+import com.jayklef.acada.entity.Student;
 import com.jayklef.acada.service.DepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -53,5 +54,6 @@ public class DepartmentController {
         Department department = departmentService.findByName(name);
         return new ResponseEntity<>(department, HttpStatus.FOUND);
     }
+
 
 }

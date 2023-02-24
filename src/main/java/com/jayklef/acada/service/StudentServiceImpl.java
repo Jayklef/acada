@@ -170,4 +170,9 @@ public class StudentServiceImpl implements StudentService{
 
     }
 
+    @Override
+    public List<Student> findAllStudentsByDepartment(Department department){
+        return studentRepository.findStudentsByDepartment(department);
+    }
+
 }
