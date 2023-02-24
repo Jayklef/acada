@@ -11,6 +11,8 @@ import com.jayklef.acada.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -97,6 +99,14 @@ public class CourseServiceImpl implements CourseService{
     @Override
     public Course findByName(String name) {
         return courseRepository.findByName(name);
+    }
+
+    @Override
+    public Long findTotalCoursesByStudent(Student student) {
+        long course = courseRepository.findAll()
+                .size();
+        return course;
+
     }
 
 }

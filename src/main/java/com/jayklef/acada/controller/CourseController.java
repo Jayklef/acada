@@ -2,6 +2,7 @@ package com.jayklef.acada.controller;
 
 import com.jayklef.acada.dto.CourseDto;
 import com.jayklef.acada.entity.Course;
+import com.jayklef.acada.entity.Student;
 import com.jayklef.acada.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -9,6 +10,7 @@ import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @RestController
@@ -52,6 +54,11 @@ public class CourseController {
     public ResponseEntity<Course> findCourseByName(@RequestParam String name){
         Course course = courseService.findByName(name);
         return new ResponseEntity<>(course, HttpStatus.OK);
+    }
+
+    @GetMapping("/courses/student")
+    public Long totalCoursesByStudent(@RequestParam Student student){
+        return courseService.findTotalCoursesByStudent(student);
     }
 
 }

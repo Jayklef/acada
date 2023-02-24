@@ -2,7 +2,9 @@ package com.jayklef.acada.service;
 
 import com.jayklef.acada.dto.CourseDto;
 import com.jayklef.acada.entity.Course;
+import com.jayklef.acada.entity.Student;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public interface CourseService {
@@ -18,4 +20,6 @@ public interface CourseService {
     void deleteCourse(Long id) throws Exception;
 
     Course findByName(String name);
+
+    Long findTotalCoursesByStudent(Student student);
 }
