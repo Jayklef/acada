@@ -48,4 +48,10 @@ public class DepartmentController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
+    @GetMapping("/name")
+    public ResponseEntity<Department> getDepartmentByName(@RequestParam String name){
+        Department department = departmentService.findByName(name);
+        return new ResponseEntity<>(department, HttpStatus.FOUND);
+    }
+
 }

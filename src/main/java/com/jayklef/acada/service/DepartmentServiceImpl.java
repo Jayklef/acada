@@ -80,4 +80,10 @@ public class DepartmentServiceImpl implements DepartmentService{
         departmentRepository.deleteById(id);
     }
 
+    @Override
+    public Department findByName(String name) {
+        Department department = departmentRepository.findByName(name);
+        return department;
+    }
+
 }

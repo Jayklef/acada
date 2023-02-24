@@ -18,4 +18,5 @@ public interface DepartmentService {
 
     void deleteDepartment(Long id) throws Exception;
 
+    Department findByName(String name);
 }
