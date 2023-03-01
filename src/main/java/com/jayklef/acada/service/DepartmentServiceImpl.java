@@ -87,4 +87,10 @@ public class DepartmentServiceImpl implements DepartmentService{
         return department;
     }
 
+    @Override
+    public Department findDepartmentByLocation(String location) {
+        Department department = departmentRepository.findDepartmentByLocation(location);
+        return department;
+    }
+
 }
