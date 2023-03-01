@@ -37,7 +37,7 @@ public class AttachmentController {
         );
     }
 
-    @GetMapping("")
+    @GetMapping("/download/{fileId}")
     public ResponseEntity<Resource> downLoadFile(@PathVariable("fileId") String fileId){
         Attachment attachment = attachmentService.getAttachment(fileId);
         return ResponseEntity.ok()
