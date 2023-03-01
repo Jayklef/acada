@@ -32,19 +32,19 @@ public class DepartmentController {
     }
 
     @GetMapping("/department/{id}")
-    public ResponseEntity<Department> getDepartment(@PathVariable("departmentId") Long id) throws Exception {
+    public ResponseEntity<Department> getDepartment(@PathVariable("id") Long id) throws Exception {
         Department department = departmentService.findDepartment(id);
         return new ResponseEntity<>(department, HttpStatus.OK);
     }
     @PutMapping("/update/{id}")
-    public ResponseEntity<Department> updateDepartment(@PathVariable("departmentId") Long id,
+    public ResponseEntity<Department> updateDepartment(@PathVariable("id") Long id,
                                                        @RequestBody DepartmentDto departmentDto){
         Department updatedDepartment = departmentService.updateDepartment(id, departmentDto);
         return new ResponseEntity<>(updatedDepartment, HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<HttpStatus> deleteDepartment(@PathVariable("departmentId") Long id) throws Exception {
+    public ResponseEntity<HttpStatus> deleteDepartment(@PathVariable("id") Long id) throws Exception {
         departmentService.deleteDepartment(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
@@ -52,6 +52,12 @@ public class DepartmentController {
     @GetMapping("/name")
     public ResponseEntity<Department> getDepartmentByName(@RequestParam String name){
         Department department = departmentService.findByName(name);
+        return new ResponseEntity<>(department, HttpStatus.FOUND);
+    }
+
+    @GetMapping("/location")
+    public ResponseEntity<Department> getDepartmentByLocation(@RequestParam String location){
+        Department department = departmentService.findDepartmentByLocation(location);
         return new ResponseEntity<>(department, HttpStatus.FOUND);
     }
 

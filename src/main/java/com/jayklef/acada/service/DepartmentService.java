@@ -21,4 +21,5 @@ public interface DepartmentService {
 
     Department findByName(String name);
 
+    Department findDepartmentByLocation(String location);
 }

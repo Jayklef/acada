@@ -8,6 +8,7 @@ import com.jayklef.acada.exception.ResourceNotFoundException;
 import com.jayklef.acada.repository.DepartmentRepository;
 import com.jayklef.acada.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -173,6 +174,11 @@ public class StudentServiceImpl implements StudentService{
     @Override
     public List<Student> findAllStudentsByDepartment(Department department){
         return studentRepository.findStudentsByDepartment(department);
+    }
+
+    @Override
+    public Page<Student> findAllStudents(Integer pageNumber, Integer pageSize) {
+        return studentRepository.findAllStudent(pageNumber, pageSize);
     }
 
 }
