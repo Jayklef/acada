@@ -4,6 +4,7 @@ import com.jayklef.acada.dto.StudentDto;
 import com.jayklef.acada.entity.Department;
 import com.jayklef.acada.entity.Student;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 
 import java.math.BigDecimal;
@@ -34,5 +35,5 @@ public interface StudentService {
 
     List<Student> findAllStudentsByDepartment(Department department);
 
-    Page<Student> findAllStudents(Integer pageNumber, Integer pageSize);
+   /* Page<Student> findAllStudents(Integer pageNumber, Integer pageSize); */
 }

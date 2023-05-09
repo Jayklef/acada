@@ -51,7 +51,7 @@ public class CourseController {
     }
 
     @GetMapping("/name")
-    public ResponseEntity<Course> findCourseByName(@RequestParam String name){
+    public ResponseEntity<Course> getCourseByName(@RequestParam String name){
         Course course = courseService.findByName(name);
         return new ResponseEntity<>(course, HttpStatus.OK);
     }
