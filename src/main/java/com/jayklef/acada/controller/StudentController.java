@@ -88,10 +88,9 @@ public class StudentController {
         return new ResponseEntity<>(students, HttpStatus.FOUND);
     }
 
-   /* @GetMapping("all/students")
-    public Page<Student> studentsPagination(@PathVariable("pageNumber") Integer pageNumber,
+    @GetMapping("students/pagingAndSorting/{pageNumber}/{pageSize}")
+    public Page<Student> getStudentsPagination(@PathVariable("pageNumber") Integer pageNumber,
                                             @PathVariable("pageSize") Integer pageSize){
-        return studentService.findAllStudents(pageNumber, pageSize);
-    }  */
-
+        return studentService.findStudentsPagination(pageNumber, pageSize);
+    }
 }

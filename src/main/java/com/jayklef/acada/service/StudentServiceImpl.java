@@ -9,6 +9,7 @@ import com.jayklef.acada.repository.DepartmentRepository;
 import com.jayklef.acada.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -177,9 +178,10 @@ public class StudentServiceImpl implements StudentService{
         return studentRepository.findStudentsByDepartment(department);
     }
 
-  /*  @Override
-    public Page<Student> findAllStudents(Integer pageNumber, Integer pageSize) {
-        return studentRepository.findAllStudents(pageNumber, pageSize);
-    }  */
+    @Override
+    public Page<Student> findStudentsPagination(Integer pageNumber, Integer pageSize) {
+        Pageable pageable = PageRequest.of(pageNumber, pageSize);
+        return studentRepository.findAll(pageable);
+    }
 
 }
