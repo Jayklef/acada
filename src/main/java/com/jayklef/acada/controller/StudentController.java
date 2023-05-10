@@ -91,6 +91,13 @@ public class StudentController {
     @GetMapping("students/pagingAndSorting/{pageNumber}/{pageSize}")
     public Page<Student> getStudentsPagination(@PathVariable("pageNumber") Integer pageNumber,
                                             @PathVariable("pageSize") Integer pageSize){
-        return studentService.findStudentsPagination(pageNumber, pageSize);
+        return studentService.findStudentsPagination(pageNumber, pageSize, null);
+    }
+
+    @GetMapping("students/pagingAndSorting/{pageNumber}/{pageSize}/{sortProperty}")
+    public Page<Student> getStudentsPagination(@PathVariable("pageNumber") Integer pageNumber,
+                                               @PathVariable("pageSize") Integer pageSize,
+                                               @PathVariable("sortProperty") String sortProperty){
+        return studentService.findStudentsPagination(pageNumber, pageSize, sortProperty);
     }
 }

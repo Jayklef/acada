@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -179,8 +180,13 @@ public class StudentServiceImpl implements StudentService{
     }
 
     @Override
-    public Page<Student> findStudentsPagination(Integer pageNumber, Integer pageSize) {
-        Pageable pageable = PageRequest.of(pageNumber, pageSize);
+    public Page<Student> findStudentsPagination(Integer pageNumber, Integer pageSize, String sortProperty) {
+        Pageable pageable = null;
+        if (sortProperty != null){
+            pageable = PageRequest.of(pageNumber, pageSize, Sort.Direction.ASC, sortProperty);
+        }else {
+            pageable = PageRequest.of(pageNumber, pageSize, Sort.Direction.ASC, "name");
+        }
         return studentRepository.findAll(pageable);
     }
 

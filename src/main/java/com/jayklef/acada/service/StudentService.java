@@ -35,5 +35,5 @@ public interface StudentService {
 
     List<Student> findAllStudentsByDepartment(Department department);
 
-    Page<Student> findStudentsPagination(Integer pageNumber, Integer pageSize);
+    Page<Student> findStudentsPagination(Integer pageNumber, Integer pageSize, String sortProperty);
 }

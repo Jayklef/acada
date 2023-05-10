@@ -16,5 +16,4 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
 
     List<Student> findStudentsByDepartment (Department department);
 
-   /* Page<Student> findAllStudents(Integer pageNumber, Integer pageSize); */
 }
