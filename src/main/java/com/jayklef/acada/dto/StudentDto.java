@@ -17,6 +17,6 @@ public class StudentDto {
     private String birthDate;
     private String address;
     private String state;
-    private Department departmentId;
+    private DepartmentDto departmentDto;
 
 }

@@ -11,6 +11,6 @@ public class CourseDto {
     private String name;
     private Integer unit;
     private String code;
-    private Long studentId;
-    private Long departmentId;
+    private StudentDto studentDto;
+    private DepartmentDto departmentDto;
 }

@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
 import java.math.BigDecimal;
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -22,4 +23,5 @@ public class DepartmentDto {
     private String location;
 
     private BigDecimal schoolFee;
+    private Set<StudentDto> students;
 }
