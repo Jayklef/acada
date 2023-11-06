@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -21,9 +22,9 @@ public class Department {
     private String location;
     private BigDecimal schoolFee;
 
-    /*@OneToMany(mappedBy = "student")
-    private Set<Student> students;
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
+    private Set<Student> students = new HashSet<>();
 
-    @OneToMany(mappedBy = "course")
-    private Set<Course> courses; */
+    @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
+    private Set<Course> courses = new HashSet<>();
 }
